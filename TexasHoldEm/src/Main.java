@@ -10,6 +10,9 @@ public class Main {
         String[] suits = {"Clubs", "Spades", "Diamonds", "Hearts"};
         String[] faces =  {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
+        // Draw variable used to draw from the deck at a random index. Used whenever a card is given to a player
+        // or to the board.
+        int draw = deckDraw.nextInt(52);
         // deckPos used to iterate through the deck array in, each position should hold a unique card
         int deckPos = 0;
 
@@ -23,7 +26,7 @@ public class Main {
         }
         
         // Player is generated after the deck, so that the deck[] array can be accessed.
-        Player player1 = new Player(deck[deckDraw.nextInt(52)], deck[deckDraw.nextInt(52)] );
+        Player player1 = new Player(deck[draw], deck[draw] );
         
         
         System.out.println(player1.getSecondCard().getId());
