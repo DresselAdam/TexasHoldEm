@@ -13,12 +13,24 @@ public class Player {
 		hand[1] = secondCard;
 	}
 
+	public Card[] getHand() {
+		return hand;
+	}
+	
 	public Card getFirstCard() {
 		return hand[0];
 	}
 
 	public Card getSecondCard() {
 		return hand[1];
+	}
+	
+	public void setFirstCard(Card firstCard) {
+		hand[0] = firstCard;	
+	}
+	
+	public void setSecondCard(Card secondCard) {
+		hand[1] = secondCard;	
 	}
 }
 
