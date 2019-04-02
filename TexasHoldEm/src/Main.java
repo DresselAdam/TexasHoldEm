@@ -1,7 +1,7 @@
 // Adam Dressel
-// 														**** REMINDER *****
-// 															Edit Loops!
+// 														
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -30,7 +30,8 @@ public class Main {
         Player player1 = new Player();
         
         // Draw variable used to draw from the deck at a random index. Used in the loop to give a random card to player 1
-        for(int i = 0; i < 2; i++) {
+        // The hand[] array for player 1 is used and looped through. Each card is assigned a random card in the deck
+        for(int i = 0; i < player1.getPocket().length; i++) {
         	int draw = deckDraw.nextInt(52);
         	if(i == 0) {
         		player1.setFirstCard(deck[draw]);
@@ -40,27 +41,32 @@ public class Main {
         	}
         	
         }
+        // Card Ids for each of the cards in PlayerHand. Assigned to these variables for conciseness.
+        String p1FirstCard = player1.getFirstCard().getId(); 
+        String p1SecondCard = player1.getSecondCard().getId();
         
-        Board gameBoard = new Board(deck[0],deck[1],deck[2]);
-        System.out.println("Board:");
-        for(int j = 0; j < 3; j++) {
-        	System.out.printf("%s | ",gameBoard.getCardInBoard(j).getId());
+        // Initialization of the gameBoard, currently assigned specified cards in deck. **CHANGE SOON**
+        Board gameBoard = new Board();
+        
+        // addCards iterated up to 3, initial turn for Texas Holdem has 3 cards on the board.
+        for(int addCards = 0; addCards < 3; addCards++) {
+        	int draw = deckDraw.nextInt(52);
+        	gameBoard.addBoardCard(deck[draw]);
         }
+        // Text for the board and it's cards.
+        System.out.println("Board:");
+        String[] boardCards = new String[3];
+        for(int j = 0; j < 3; j++) {
+        	boardCards[j] = gameBoard.getCardInBoard(j).getId();
+        	System.out.printf("%s | ",boardCards[j]);
+        }
+        
+        // Text for player1 and their cards.
         System.out.printf("\nPlayer:");
         
-        System.out.printf("\n%s | ", player1.getSecondCard().getId());
-        System.out.printf(" %s", player1.getFirstCard().getId());
+        System.out.printf("\n%s | ", p1FirstCard);
+        System.out.printf(" %s", p1SecondCard);
 	
-	
-		for(int loopHand = 0; loopHand < player1.getHand().length; loopHand++) {
-			for(int loopBoard = 0; loopBoard < gameBoard.getBoard().size(); loopBoard++) {
-				if(player1.getFirstCard().getId().equals(gameBoard.getCardInBoard(loopBoard).getId())) {
-					System.out.printf("\nPair!");
-				}
-				else {
-					continue;
-				}
-			}
-		}
+		
 	}
 }
