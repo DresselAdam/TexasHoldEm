@@ -31,7 +31,7 @@ public class Board{
 	}
 	
 	// Getting a card at the specified position in the board ArrayList. Useful for card comparisons.
-	public Card getCardInBoard(int boardPos) {
+	public Card getCard(int boardPos) {
 		return board.get(boardPos);
 	}
 	

@@ -31,7 +31,7 @@ public class Main {
         
         // Draw variable used to draw from the deck at a random index. Used in the loop to give a random card to player 1
         // The hand[] array for player 1 is used and looped through. Each card is assigned a random card in the deck
-        for(int i = 0; i < player1.getPocket().length; i++) {
+        for(int i = 0; i < 2; i++) {
         	int draw = deckDraw.nextInt(52);
         	if(i == 0) {
         		player1.setFirstCard(deck[draw]);
@@ -42,8 +42,8 @@ public class Main {
         	
         }
         // Card Ids for each of the cards in PlayerHand. Assigned to these variables for conciseness.
-        String p1FirstCard = player1.getFirstCard().getId(); 
-        String p1SecondCard = player1.getSecondCard().getId();
+        String p1FirstCard = player1.getCard(0).getId(); 
+        String p1SecondCard = player1.getCard(1).getId();
         
         // Initialization of the gameBoard, currently assigned specified cards in deck. **CHANGE SOON**
         Board gameBoard = new Board();
@@ -57,7 +57,7 @@ public class Main {
         System.out.println("Board:");
         String[] boardCards = new String[3];
         for(int j = 0; j < 3; j++) {
-        	boardCards[j] = gameBoard.getCardInBoard(j).getId();
+        	boardCards[j] = gameBoard.getCard(j).getId();
         	System.out.printf("%s | ",boardCards[j]);
         }
         
