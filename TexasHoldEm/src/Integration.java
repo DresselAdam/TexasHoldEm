@@ -1,4 +1,9 @@
 //Adam Dressel
+// Inheritance is when one class obtains all of the fields and methods of another class. 
+// This is done with the extends keyword. This allows for more concisely written code,
+// as methods can be reused, without having to create the same fields and methods.
+// This also allows for organization in a program so that similar objects can be used
+// and grouped in a set of super and sub classes.
 public class Integration {
   private static int num1;
   private static int num2;
