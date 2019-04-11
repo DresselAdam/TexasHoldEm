@@ -3,6 +3,7 @@
 • Overload a method
 // Method setFace in Card class is overloaded.
 • Describe inheritance and its benefits
+// Top of the integration class.
 • Develop code that makes use of polymorphism
 // The player class inherits the Board class, and makes use of the same
 // fields and methods.
