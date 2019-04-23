@@ -9,8 +9,12 @@ public class Card {
 
   }
 
-  // Constructor that takes two strings - face and suit - as parameters.
-  // The id is set the full name of the card, because thats what people use to refer to cards.
+  /**Constructor that takes two strings - face and suit - as parameters.
+  The id is set the full name of the card, because thats what people use to
+  refer to cards.
+   * @param suit The suit is one of the four categories of cards, i.e. hearts
+   * @param face The face is the number or type of card i.e. queen 2.
+   */
   public Card(String suit, String face) {
     this.face = face;
     this.suit = suit;
@@ -20,7 +24,6 @@ public class Card {
   public void setFace(String face) {
     this.face = face;
   }
-
 
   // Overriding the setFace method to be able to take an integer as a parameter.
   public void setFace(int face) {
