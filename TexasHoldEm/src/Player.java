@@ -1,10 +1,13 @@
-//Adam Dressel
+// Adam Dressel
 public class Player extends Board {
   private static int playerCount;
-  private static int cardCount;
 
   // Empty constructor
   public Player() {
+    Player.setPlayerCount();
+  }
+
+  public static void setPlayerCount() {
     playerCount++;
   }
 
@@ -17,4 +20,3 @@ public class Player extends Board {
     return playerCount;
   }
 }
-
