@@ -1,5 +1,8 @@
+
 // Adam Dressel
-//
+// This project is the framework for a Texas Hold'em game.
+// A deck of cards is generated and assigned to boards and players
+// Currently no user interaction or "game" mechanics have been implemented.
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -8,13 +11,18 @@ import java.util.Scanner;
 
 public class Main {
 
+  /**The main method is the driving class of the Texas hold'em program.
+   @param args Classic main syntax. 
+   */
   public static void main(String[] args) {
     // Scanner asks for the number of players in the current game.
     // Exception handling is done to make sure the user enters an integer.
-    Scanner scan = new Scanner(System.in);
-    System.out.println("Enter number of players");
+    System.out.println("Welcome to Texas Hold'em!");
+    Scanner scan = new Scanner(System.in, "utf-8");
+    System.out.println("Please enter the number of players.");
     int numPlayers = 0;
-    // Input is contained in a do while loop and only exits when the next input is an integer.
+    // Input is contained in a do while loop and only exits when the next input is
+    // an integer.
     do {
       try {
         numPlayers = scan.nextInt();
@@ -24,10 +32,12 @@ public class Main {
         scan.next();
       }
     } while (scan.hasNextLine());
-    // Deck is a card array that is used to hold different all the cards of a standard deck.
+    // Deck is a card array that is used to hold different all the cards of a
+    // standard deck.
     Card[] deck = new Card[52];
 
-    // deckDraw is used to create an array of random integers. These integers are used to draw from
+    // deckDraw is used to create an array of random integers. These integers are
+    // used to draw from
     // the deck
     // at random intervals.
     Random deckDraw = new Random();
@@ -35,15 +45,18 @@ public class Main {
     String[][] cardId = {{"Clubs", "Spades", "Diamonds", "Hearts"},
         {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"}};
 
-    // deckPos used to iterate through the deck array in, each position should hold a unique card
+    // deckPos used to iterate through the deck array in, each position should hold
+    // a unique card
     int deckPos = 0;
 
-    // The following subroutine generates the deck of cards using the cardId 2d array. A nested for
+    // The following subroutine generates the deck of cards using the cardId 2d
+    // array. A nested for
     // loop is used
     // and a new card is created for each unique suit and face "pair."
     for (int suit = 0; suit < 4; suit++) {
       for (int face = 0; face < 13; face++) {
-        // First value of array is assigned zero, since that is the suit array, second value is
+        // First value of array is assigned zero, since that is the suit array, second
+        // value is
         // assigned 1
         // since it is the second array in cardID[][].
         deck[deckPos] = new Card(cardId[0][suit], cardId[1][face]);
@@ -65,10 +78,12 @@ public class Main {
     // Initialization of the gameBoard, holds an ArrayList of cards.
     Board gameBoard = new Board();
 
-    // addCards iterated up to 3, initial turn for Texas Holdem has 3 cards on the board.
+    // addCards iterated up to 3, initial turn for Texas Holdem has 3 cards on the
+    // board.
     // A card is added to the deck by accessing the deckShuffle integer arrayList.
     // The arrayList is access via the board's static method - getCount - which
-    // gets a static value that is incremented every time the addCard method is used.
+    // gets a static value that is incremented every time the addCard method is
+    // used.
     for (int addCards = 0; addCards < 3; addCards++) {
       gameBoard.addCard(deck[deckShuffle.get(Board.getCount())]);
     }
@@ -84,7 +99,8 @@ public class Main {
     }
     System.out.println("");
     // Player is generated after the deck, so that the deck[] array can be accessed.
-    // The table array holds the amount of players in the game, chosen by user input.
+    // The table array holds the amount of players in the game, chosen by user
+    // input.
     // The players card are added in the same manner as the board cards, using the
     // deckShuffle arrayList.
     Player[] table = new Player[numPlayers];
@@ -103,15 +119,15 @@ public class Main {
       // Text for player1 and their cards.
       System.out.printf("\nPlayer" + (plyrNum + 1) + ":");
 
-      System.out.printf("\n%s | ", plyrCard1);
+      System.out.printf("%n%s | ", plyrCard1);
       System.out.printf(" %s", plyrCard2);
 
       System.out.println("");
     }
     scan.close();
 
-
-    // The deckShuffle is an arrayList of integers. This loop adds every element of the arrayList
+    // The deckShuffle is an arrayList of integers. This loop adds every element of
+    // the arrayList
     // together
     // and the sum is printed after the loop.
     // The loop is a for each loop.
@@ -121,7 +137,8 @@ public class Main {
     }
     System.out.println("The sum of deckShuffle is " + sum);
 
-    // Integration requirements that did not fit with the theme are relegated to their own class,
+    // Integration requirements that did not fit with the theme are relegated to
+    // their own class,
     // and the requirements are called via static methods.
     Integration.smallElement();
     Integration.findIndex();
